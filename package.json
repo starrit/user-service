@@ -1,0 +1,14 @@
+{
+  "name": "starrit-user-service",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bunyan": "1.8.5",
+    "express": "4.14.0",
+    "grpc": "^1.0.1",
+    "mongoose": "^4.7.7"
+  }
+}

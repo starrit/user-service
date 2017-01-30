@@ -1,0 +1,24 @@
+version: '2'
+services:
+  user-service:
+    build: .
+    command: npm run dev
+    container_name: user-service
+    environment:
+      - PORT=3000
+      - DEBUG=true
+      - MONGO_HOST=mongodb-user-service
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/srv/user-service/src
+      - ./server.js:/srv/user-service/server.js
+      - ./package.json:/srv/user-service/package.json
+    links:
+      - mongodb-user-service:mongo
+
+  mongodb-user-service:
+    container_name: mongodb-user-service
+    image: mongo:3.2.8
+    ports:
+      - 27017:27017

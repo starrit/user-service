@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package users;
+
+import "google/api/annotations.proto";
+
+message IdMessage {
+  string id = 1;
+}
+
+message User {
+  string id = 1;
+  string name = 2;
+  string nickname = 3;
+  string bio = 4;
+  string location = 5;
+  int32 age = 6;
+  string website = 7;
+  int32 created_at = 8;
+  int32 updated_at = 9;
+}
+
+service UserService {
+
+  rpc GetUserCall(IdMessage) returns (User) {
+    option (google.api.http) = {
+      get: "/users/{id}"
+    };
+  }
+
+  rpc CreateUserCall(User) returns (User) {
+    option (google.api.http) = {
+      post: "/users"
+      body: "*"
+    };
+  }
+}
+
